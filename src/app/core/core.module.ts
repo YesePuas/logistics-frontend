@@ -9,8 +9,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatTabsModule } from '@angular/material/tabs';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SupplierModule } from '../modules/supplier/supplier.module';
+import { VehicleModule } from '../modules/vehicle/vehicle.module';
 @NgModule({
   declarations: [],
   imports: [

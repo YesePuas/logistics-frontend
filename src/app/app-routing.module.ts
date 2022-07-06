@@ -14,7 +14,7 @@ const routes: Routes = [
       import('./modules/vehicle/vehicle.module').then((i) => i.VehicleModule),
   },
   {
-    path: 'provedor',
+    path: 'supplier',
     loadChildren: () =>
       import('./modules/supplier/supplier.module').then(
         (i) => i.SupplierModule

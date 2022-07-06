@@ -1,0 +1,52 @@
+@import "../../../../styles/mixins.scss";
+
+.container-info {
+  display: flex;
+  flex-direction: column;
+
+  strong {
+    font-size: 12px;
+  }
+}
+
+.main-container {
+  display: grid;
+  gap: 10px;
+  @include extrasmall {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include small {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.card {
+  background-color: white;
+  margin: 20px 30px;
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.license-plate {
+  font-size: 15px;
+  font-weight: bold;
+  color: #142747;
+}
+
+.active {
+  background-color: #f8b30d;
+  max-width: 80px;
+  padding: 5px 5px 5px 10px;
+  border-radius: 15px;
+}
+.inactive {
+  background-color: #ff5353;
+  max-width: 80px;
+  padding: 5px 5px 5px 10px;
+  border-radius: 15px;
+}

@@ -7,7 +7,11 @@ import { VehicleItemComponent } from './vehicle-item/vehicle-item.component';
 import { VehicleCreateComponent } from './vehicle-create/vehicle-create.component';
 
 @NgModule({
-  declarations: [VehicleItemComponent, VehicleListComponent, VehicleCreateComponent],
+  declarations: [
+    VehicleItemComponent,
+    VehicleListComponent,
+    VehicleCreateComponent,
+  ],
   imports: [CommonModule, VehicleRoutingModule],
 })
 export class VehicleModule {}
