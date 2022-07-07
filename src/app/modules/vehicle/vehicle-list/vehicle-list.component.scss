@@ -9,9 +9,21 @@
   justify-content: space-between;
 }
 
-.button {
+.group-btn {
+  display: flex;
+  gap: 20px;
+}
+.blue {
   background-color: #142b47;
   border: 1px solid #142b47;
+}
+
+.yellow {
+  background-color: #4b361f;
+  border: 1px solid #4b361f;
+}
+
+.button {
   border-radius: 15px;
   cursor: pointer;
   color: #ffffff;

@@ -14,6 +14,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SupplierModule } from '../modules/supplier/supplier.module';
 import { VehicleModule } from '../modules/vehicle/vehicle.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -32,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatTabsModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
   ],
   exports: [
     FormsModule,
@@ -48,6 +51,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatAutocompleteModule,
   ],
 })
 export class CoreModule {}

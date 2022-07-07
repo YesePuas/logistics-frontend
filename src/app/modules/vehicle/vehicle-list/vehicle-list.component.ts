@@ -16,6 +16,10 @@ export class VehicleListComponent implements OnInit {
     this.router.navigate(['/vehicle/create']);
   }
 
+  public associateVehicle() {
+    this.router.navigate(['/asociate/create']);
+  }
+
   public goBack() {
     this.location.back();
   }

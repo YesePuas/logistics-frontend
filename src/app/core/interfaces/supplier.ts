@@ -1,5 +1,5 @@
 export interface Supplier {
-  id: number;
+  id: string;
   document_type: string;
   document_number: string;
   full_name: string;

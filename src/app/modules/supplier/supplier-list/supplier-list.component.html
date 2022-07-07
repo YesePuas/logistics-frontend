@@ -2,4 +2,33 @@
   <strong class="btn-back" (click)="goBack()">Atras</strong>
   <button class="button" (click)="createSupplier()">Crear proveedor</button>
 </div>
-<app-supplier-item></app-supplier-item>
+<div>
+  <form class="form-auto-complete">
+    <mat-form-field appearance="fill" class="input-search">
+      <mat-label>
+        Buscar por Nombre o Numero de identificaciòn proveedor
+      </mat-label>
+      <input
+        matInput
+        type="search"
+        placeholder="Filtrar por nombre de proveedor"
+        [(ngModel)]="dataSearch"
+        [ngModelOptions]="{ standalone: true }"
+        (ngModelChange)="searchBySupplier()"
+      />
+    </mat-form-field>
+  </form>
+</div>
+<article id="main-container" *ngIf="suppliers && suppliers.length">
+  <app-supplier-item
+    *ngFor="let supplier of suppliers"
+    [supplierItem]="supplier"
+  ></app-supplier-item>
+</article>
+<mat-card
+  id="container-no-data"
+  *ngIf="(suppliers && suppliers.length == 0) || !suppliers"
+>
+  <img class="icon-404" src="assets/opp-404.png" alt="" />
+  <strong> No se encontraron resultados para esta busqueda</strong>
+</mat-card>

@@ -26,9 +26,18 @@ export class SupplierCreateComponent implements OnInit {
     if (this.formSupplier.valid) {
       console.log(this.formSupplier.value);
     } else {
-      this._snackBar.open('Faltan campos por llenar', 'x', {
-        duration: 3000,
-      });
+      if (
+        this.formSupplier.get('email')?.invalid &&
+        this.formSupplier.get('email')?.value?.length !== 0
+      ) {
+        this._snackBar.open('Email invalido', 'x', {
+          duration: 3000,
+        });
+      } else {
+        this._snackBar.open('Faltan campos por llenar', 'x', {
+          duration: 3000,
+        });
+      }
     }
   }
 

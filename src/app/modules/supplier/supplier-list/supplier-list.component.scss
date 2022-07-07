@@ -18,3 +18,27 @@
   padding: 10px 16px;
   text-decoration: none;
 }
+
+.form-auto-complete {
+  margin: 30px;
+  display: flex;
+  gap: 30px;
+}
+
+.input-search {
+  width: 100%;
+}
+
+#container-no-data {
+  margin: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.icon-404 {
+  height: 150px;
+  width: auto;
+}

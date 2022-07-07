@@ -1,5 +1,12 @@
 <div class="actions">
   <strong class="btn-back" (click)="goBack()">Atras</strong>
-  <button class="button" (click)="createVehicle()">Crear vehiculo</button>
+  <div class="group-btn">
+    <button class="button blue" (click)="createVehicle()">
+      Crear vehiculo
+    </button>
+    <button class="button yellow" (click)="associateVehicle()">
+      Asociar vehiculo
+    </button>
+  </div>
 </div>
 <app-vehicle-item></app-vehicle-item>

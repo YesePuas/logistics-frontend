@@ -21,6 +21,13 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'asociate',
+    loadChildren: () =>
+      import('./modules/asociate/asociate.module').then(
+        (i) => i.AsociateModule
+      ),
+  },
+  {
     path: '**',
     redirectTo: '/home',
     pathMatch: 'full',

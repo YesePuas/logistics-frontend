@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './modules/home/home.component';
 import { CoreModule } from './core/core.module';
+import { AsociateCreateComponent } from './modules/asociate/asociate-create/asociate-create.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent, HomeComponent, AsociateCreateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
