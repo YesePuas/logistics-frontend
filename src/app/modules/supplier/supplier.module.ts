@@ -4,6 +4,8 @@ import { SupplierItemComponent } from './supplier-item/supplier-item.component';
 import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import { SupplierCreateComponent } from './supplier-create/supplier-create.component';
 import { SupplierRoutingModule } from './supplier-routing.module';
+import { core } from '@angular/compiler';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [
@@ -11,6 +13,7 @@ import { SupplierRoutingModule } from './supplier-routing.module';
     SupplierListComponent,
     SupplierCreateComponent,
   ],
-  imports: [CommonModule, SupplierRoutingModule],
+  imports: [CommonModule, SupplierRoutingModule, CoreModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class SupplierModule {}

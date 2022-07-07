@@ -8,14 +8,19 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatSelectModule } from '@angular/material/select';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SupplierModule } from '../modules/supplier/supplier.module';
 import { VehicleModule } from '../modules/vehicle/vehicle.module';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
   imports: [
+    FormsModule,
     CommonModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatMenuModule,
     MatIconModule,
     MatCardModule,
@@ -35,6 +40,8 @@ import { VehicleModule } from '../modules/vehicle/vehicle.module';
     MatInputModule,
     MatListModule,
     MatTabsModule,
+    MatFormFieldModule,
+    MatSelectModule,
   ],
 })
 export class CoreModule {}
