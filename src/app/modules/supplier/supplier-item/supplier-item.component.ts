@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Supplier } from 'src/app/core/interfaces/supplier';
+import { SupplierAmountVeicle } from 'src/app/core/interfaces/supplier';
 
 @Component({
   selector: 'app-supplier-item',
@@ -7,7 +7,7 @@ import { Supplier } from 'src/app/core/interfaces/supplier';
   styleUrls: ['./supplier-item.component.scss'],
 })
 export class SupplierItemComponent implements OnInit {
-  @Input() supplierItem?: Supplier;
+  @Input() supplierItem?: SupplierAmountVeicle;
 
   constructor() {}
 

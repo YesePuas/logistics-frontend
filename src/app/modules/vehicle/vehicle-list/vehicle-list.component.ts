@@ -1,6 +1,9 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { VehicleDriver } from 'src/app/core/interfaces/vehicle';
+import { SupplierService } from '../../supplier/supplier.service';
+import { VehicleService } from '../vehicle.service';
 
 @Component({
   selector: 'app-vehicle-list',
@@ -8,9 +11,39 @@ import { Router } from '@angular/router';
   styleUrls: ['./vehicle-list.component.scss'],
 })
 export class VehicleListComponent implements OnInit {
-  constructor(private location: Location, private router: Router) {}
+  constructor(
+    private location: Location,
+    private router: Router,
+    private service: VehicleService
+  ) {}
 
-  ngOnInit(): void {}
+  public vehicles: VehicleDriver[] = [];
+  public copyVehicle: VehicleDriver[] = [];
+  public dataSearch: string = '';
+
+  ngOnInit() {
+    this.getAllVehicle();
+  }
+
+  public getAllVehicle() {
+    this.service.getAllVehicle().subscribe((res: VehicleDriver[]) => {
+      this.vehicles = res;
+      this.copyVehicle = [...this.vehicles];
+    });
+  }
+
+  public searchByVehicle() {
+    this.vehicles = this.copyVehicle?.filter((res) => {
+      return (
+        res.license_plate
+          .toLocaleLowerCase()
+          .match(this.dataSearch.toLocaleLowerCase()) ||
+        res.document_number
+          ?.toLocaleLowerCase()
+          .match(this.dataSearch.toLocaleLowerCase())
+      );
+    });
+  }
 
   public createVehicle() {
     this.router.navigate(['/vehicle/create']);
@@ -21,6 +54,6 @@ export class VehicleListComponent implements OnInit {
   }
 
   public goBack() {
-    this.location.back();
+    this.router.navigate(['/home']);
   }
 }

@@ -9,4 +9,32 @@
     </button>
   </div>
 </div>
-<app-vehicle-item></app-vehicle-item>
+<form class="form-auto-complete">
+  <mat-form-field appearance="fill" class="input-search">
+    <mat-label>
+      Buscar por Nombre o Numero de identificaciòn proveedor
+    </mat-label>
+    <input
+      matInput
+      type="search"
+      placeholder="Filtrar por nombre de proveedor"
+      [(ngModel)]="dataSearch"
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="searchByVehicle()"
+    />
+  </mat-form-field>
+</form>
+
+<article id="main-container" *ngIf="vehicles && vehicles.length">
+  <app-vehicle-item
+    *ngFor="let vehicle of vehicles"
+    [vehicleItem]="vehicle"
+  ></app-vehicle-item>
+</article>
+<mat-card
+  id="container-no-data"
+  *ngIf="(vehicles && vehicles.length == 0) || !vehicles"
+>
+  <img class="icon-404" src="assets/opp-404.png" alt="" />
+  <strong> No se encontraron resultados para esta busqueda</strong>
+</mat-card>

@@ -1,10 +1,13 @@
 import { Location } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Brand } from 'src/app/core/interfaces/brand';
 import { Driver } from 'src/app/core/interfaces/driver';
+import { Vehicle } from 'src/app/core/interfaces/vehicle';
+import { VehicleService } from '../vehicle.service';
 
 @Component({
   selector: 'app-vehicle-create',
@@ -76,19 +79,40 @@ export class VehicleCreateComponent implements OnInit {
   ];
 
   public formVehicle = new FormGroup({
-    license_plate: new FormControl<string>('', Validators.required),
-    id_brand: new FormControl<string>('', Validators.required),
-    sub_brand: new FormControl<string>('', Validators.required),
+    license_plate: new FormControl('', Validators.required),
+    id_brand: new FormControl('', Validators.required),
+    sub_brand: new FormControl('', Validators.required),
     model: new FormControl<string>('', Validators.required),
   });
 
-  constructor(public location: Location, private _snackBar: MatSnackBar) {}
+  constructor(
+    public location: Location,
+    private _snackBar: MatSnackBar,
+    private service: VehicleService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   public saveSupplier() {
     if (this.formVehicle.valid) {
-      console.log(this.formVehicle.value);
+      let objVehicle: Vehicle = {
+        license_plate: this.formVehicle.value.license_plate!!,
+        id_brand: this.formVehicle.value.id_brand!!,
+        sub_brand: this.formVehicle.value.sub_brand!!,
+        model: this.formVehicle.value.model!!,
+      };
+      this.service.createVehicle(objVehicle).subscribe((res) => {
+        if (Object.entries(res)[0][1].id) {
+          this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => this.router.navigate(['/vehicle/list']));
+        } else {
+          this._snackBar.open('Ocurrio un error, intente muevamente', 'x', {
+            duration: 3000,
+          });
+        }
+      });
     } else {
       this._snackBar.open('Faltan campos por llenar', 'x', {
         duration: 3000,

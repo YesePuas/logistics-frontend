@@ -21,12 +21,12 @@
     </div>
     <div class="container-info">
       <span>Cantidad Vehiculos:</span>
-      <strong>1</strong>
+      <strong>{{ supplierItem.count }}</strong>
     </div>
     <div class="container-info">
       <span>Estado:</span>
       <strong [ngClass]="supplierItem.active ? 'active' : 'inactive'">{{
-        supplierItem.active ? "Active" : "Inactive"
+        supplierItem.active ? "Activo" : "Inactivo"
       }}</strong>
     </div>
   </section>

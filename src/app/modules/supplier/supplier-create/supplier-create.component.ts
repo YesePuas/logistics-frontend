@@ -2,6 +2,9 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Supplier } from 'src/app/core/interfaces/supplier';
+import { SupplierService } from '../supplier.service';
 
 @Component({
   selector: 'app-supplier-create',
@@ -18,13 +21,35 @@ export class SupplierCreateComponent implements OnInit {
     email: new FormControl<string>('', [Validators.email, Validators.required]),
   });
 
-  constructor(public location: Location, private _snackBar: MatSnackBar) {}
+  constructor(
+    public location: Location,
+    private _snackBar: MatSnackBar,
+    private service: SupplierService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
   public saveSupplier() {
     if (this.formSupplier.valid) {
-      console.log(this.formSupplier.value);
+      const objSupplier: Supplier = {
+        document_type: this.formSupplier.value.document_type!!,
+        document_number: this.formSupplier.value.document_number!!,
+        full_name: this.formSupplier.value.full_name!!,
+        address: this.formSupplier.value.address!!,
+        email: this.formSupplier.value.email!!,
+      };
+      this.service.createSupplier(objSupplier).subscribe((res) => {
+        if (Object.entries(res)[0][1].id) {
+          this.router
+            .navigateByUrl('/', { skipLocationChange: true })
+            .then(() => this.router.navigate(['/supplier/list']));
+        } else {
+          this._snackBar.open('Ocurrio un error, intente muevamente', 'x', {
+            duration: 3000,
+          });
+        }
+      });
     } else {
       if (
         this.formSupplier.get('email')?.invalid &&

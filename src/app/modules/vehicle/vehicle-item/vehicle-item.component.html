@@ -1,33 +1,40 @@
-<div class="card">
-  <section><p class="license-plate">AHS782</p></section>
+<div class="card" *ngIf="vehicleItem">
+  <section>
+    <p class="license-plate">{{ vehicleItem.license_plate }}</p>
+  </section>
   <section class="main-container">
     <div class="container-info">
       <span>Modelo:</span>
-      <strong>2021</strong>
+      <strong>{{ vehicleItem.model }}</strong>
     </div>
     <div class="container-info">
       <span>Marca:</span>
-      <strong>Toyota</strong>
+      <strong>{{ vehicleItem.denomination }}</strong>
     </div>
     <div class="container-info">
       <span>Sub marca:</span>
-      <strong>Capoed</strong>
+      <strong>{{ vehicleItem.sub_brand }}</strong>
     </div>
     <div class="container-info">
       <span>Estado:</span>
-      <strong class="active">Inactivo</strong>
+      <strong [ngClass]="vehicleItem.active ? 'active' : 'inactive'">{{
+        vehicleItem.active ? "Activo" : "Inactivo"
+      }}</strong>
     </div>
   </section>
   <hr />
   <section><p class="license-plate">Conductor asociado</p></section>
-  <section class="main-container">
+  <section class="main-container" *ngIf="vehicleItem.document_number">
     <div class="container-info">
       <span>Numero de Identicacion:</span>
-      <strong>35768798</strong>
+      <strong>{{ vehicleItem.document_number }}</strong>
     </div>
     <div class="container-info">
       <span>Nombre:</span>
-      <strong>Camilo Andres Castro Gil</strong>
+      <strong>{{ vehicleItem.full_name }}</strong>
     </div>
+  </section>
+  <section class="main-container" *ngIf="!vehicleItem.document_number">
+    <span>No se ha asociado un conductor</span>
   </section>
 </div>
