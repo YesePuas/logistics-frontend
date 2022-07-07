@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './modules/home/home.component';
 import { CoreModule } from './core/core.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -15,7 +14,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     BrowserAnimationsModule,
     CoreModule,
-    ReactiveFormsModule,
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -9,14 +9,16 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SupplierModule } from '../modules/supplier/supplier.module';
 import { VehicleModule } from '../modules/vehicle/vehicle.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     MatButtonModule,
     MatFormFieldModule,
@@ -29,8 +31,11 @@ import { FormsModule } from '@angular/forms';
     MatInputModule,
     MatListModule,
     MatTabsModule,
+    MatSnackBarModule,
   ],
   exports: [
+    FormsModule,
+    ReactiveFormsModule,
     MatButtonModule,
     MatMenuModule,
     MatIconModule,
@@ -42,6 +47,7 @@ import { FormsModule } from '@angular/forms';
     MatTabsModule,
     MatFormFieldModule,
     MatSelectModule,
+    MatSnackBarModule,
   ],
 })
 export class CoreModule {}
